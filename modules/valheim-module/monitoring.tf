@@ -62,7 +62,7 @@ resource "aws_cloudwatch_event_target" "valheim_started" {
   }
 }
 
-data "aws_route53_zone" "selected" {
+resource "aws_route53_zone" "selected" {
   name = "valheim.${var.domain}"
 }
 
