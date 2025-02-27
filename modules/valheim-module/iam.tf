@@ -58,7 +58,7 @@ resource "aws_iam_policy" "valheim_cname" {
       {
         Action : ["route53:ChangeResourceRecordSets"],
         Effect : "Allow",
-        Resource : ["arn:aws:route53:::hostedzone/${data.aws_route53_zone.selected[0].zone_id}"]
+        Resource : ["arn:aws:route53:::hostedzone/${data.aws_route53_zone.selected.zone_id}"]
       }
     ]
   })

@@ -175,7 +175,7 @@ resource "aws_s3_object" "update_cname" {
     username   = local.username
     aws_region = var.aws_region
     bucket     = aws_s3_bucket.valheim.id
-    zone_id    = data.aws_route53_zone.selected[0].zone_id
+    zone_id    = data.aws_route53_zone.selected.zone_id
   }))
   etag = filemd5("${path.module}/local/update_cname.sh")
 }
