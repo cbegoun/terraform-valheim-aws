@@ -71,7 +71,12 @@ resource "aws_security_group" "rdp" {
   }
 }
 
-resource "aws_key_pair" "valheim_key" {
+resource "tls_private_key" "valheim" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+resource "aws_key_pair" "valheim" {
   key_name   = "valheim-key"
-  public_key = var.public_key
+  public_key = tls_private_key.valheim.public_key_openssh
 }
