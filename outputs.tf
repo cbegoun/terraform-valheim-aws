@@ -12,10 +12,9 @@ output "instance_id" {
   value       = module.main.instance_id
   description = "The EC2 instance ID"
 }
-
-output "valheim_user_passwords" {
-  value       = module.main.valheim_user_passwords
-  description = "List of AWS users and their encrypted passwords"
+output "hosted_zone_nameservers" {
+  value       = aws_route53_zone.minecraft_ondemand_route53_zone.name_servers
+  description = "The Hosted Zone's NS records. Use this to delegate the zone from your parent zone."
 }
 
 output "valheim_server_name" {
