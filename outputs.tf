@@ -8,7 +8,6 @@ output "web_page_address" {
 
 output "private_key_pem" {
   value     = tls_private_key.valheim.private_key_pem
-  sensitive = true
 }
 
 output "public_key_openssh" {
