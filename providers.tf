@@ -1,6 +1,12 @@
 terraform {
   required_version = "~> 1.0"
+  backend "remote" {
+    organization = "terraform_cbegoun"
 
+    workspaces {
+      name = "terraform-valheim-aws"
+    }
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
