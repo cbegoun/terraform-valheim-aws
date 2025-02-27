@@ -137,7 +137,7 @@ data "archive_file" "shutdown_lambda" {
 resource "aws_lambda_function" "valheim_auto_start" {
   filename      = data.archive_file.auto_start_lambda.output_path
   function_name = "valheim_auto_start"
-  role          = aws_iam_role.lambda_exec.arn
+  role          = aws_iam_role.ondemand_valheim_task_starter_lambda_role.arn
   handler       = "auto_start.lambda_handler"
   runtime       = "python3.8"
   timeout       = 30
@@ -146,7 +146,7 @@ resource "aws_lambda_function" "valheim_auto_start" {
 resource "aws_lambda_function" "valheim_backup" {
   filename      = data.archive_file.backup_lambda.output_path
   function_name = "valheim_backup"
-  role          = aws_iam_role.lambda_exec.arn
+  role          = aws_iam_role.ondemand_valheim_task_starter_lambda_role.arn
   handler       = "backup.lambda_handler"
   runtime       = "python3.8"
   timeout       = 60
@@ -160,7 +160,7 @@ resource "aws_lambda_function" "valheim_backup" {
 resource "aws_lambda_function" "valheim_auto_shutdown" {
   filename      = data.archive_file.shutdown_lambda.output_path
   function_name = "valheim_auto_shutdown"
-  role          = aws_iam_role.lambda_exec.arn
+  role          = aws_iam_role.ondemand_valheim_task_starter_lambda_role.arn
   handler       = "shutdown.lambda_handler"
   runtime       = "python3.8"
   timeout       = 30
