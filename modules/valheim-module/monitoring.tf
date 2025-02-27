@@ -77,6 +77,11 @@ resource "aws_route53_record" "valheim" {
   records = [aws_spot_instance_request.valheim.public_dns]
 }
 
+output "hosted_zone_nameservers" {
+  value       = aws_route53_zone.selected.name_servers
+  description = "The Hosted Zone's NS records. Use this to delegate the zone from your parent zone."
+}
+
 output "monitoring_url" {
   value = format("%s%s%s", "http://", local.use_domain ? aws_route53_record.valheim[0].fqdn : aws_spot_instance_request.valheim.public_dns, ":19999")
 }
