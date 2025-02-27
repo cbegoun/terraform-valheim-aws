@@ -39,8 +39,8 @@ resource "aws_vpc" "valheim_vpc" {
 }
 
 resource "aws_subnet" "valheim_subnet" {
-  vpc_id            = aws_vpc.valheim_vpc.id
-  cidr_block        = "10.0.1.0/24"
+  vpc_id                  = aws_vpc.valheim_vpc.id
+  cidr_block              = "10.0.1.0/24"
   map_public_ip_on_launch = true
 }
 
@@ -75,10 +75,10 @@ resource "aws_ecs_task_definition" "valheim_task" {
 
   container_definitions = jsonencode([
     {
-      name  = "valheim"
-      image = "lloesche/valheim-server"
-      cpu   = 1024
-      memory = 2048
+      name      = "valheim"
+      image     = "lloesche/valheim-server"
+      cpu       = 1024
+      memory    = 2048
       essential = true
       environment = [
         { name = "SERVER_NAME", value = "MyValheimServer" },

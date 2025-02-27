@@ -85,7 +85,7 @@ resource "aws_iam_policy" "valheim_ondemand_ecs_control_policy" {
           "ecs:*"
         ],
         "Resource" : [
-          aws_ecs_service.valheim_ondemand_service.id,
+          aws_ecs_service.valheim_service.id,
           format("arn:aws:ecs:%s:%s:task/valheim/*", var.aws_region, data.aws_caller_identity.current.account_id)
         ]
       },
@@ -133,11 +133,6 @@ resource "aws_iam_policy" "valheim_ondemand_ecs_exec_policy" {
 resource "aws_iam_role_policy_attachment" "valheim_ondemand_ecs_exec_policy_attachment" {
   role       = aws_iam_role.valheim_ondemand_fargate_task_role.name
   policy_arn = aws_iam_policy.valheim_ondemand_ecs_exec_policy.arn
-}
-
-resource "aws_iam_role_policy_attachment" "valheim_ondemand_sns_publish_policy_attachment" {
-  role       = aws_iam_role.valheim_ondemand_fargate_task_role.name
-  policy_arn = aws_iam_policy.valheim_ondemand_sns_publish_policy.arn
 }
 
 resource "aws_iam_policy" "valheim_ondemand_route53_update_policy" {
