@@ -65,7 +65,7 @@ resource "aws_cloudwatch_event_target" "valheim_started" {
 data "aws_route53_zone" "selected" {
   count = local.use_domain ? 1 : 0
 
-  name = "${var.domain}."
+  name = "valheim.${var.domain}"
 }
 
 resource "aws_route53_record" "valheim" {
