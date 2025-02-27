@@ -175,7 +175,7 @@ resource "aws_cloudwatch_event_rule" "valheim_shutdown_schedule" {
 
 resource "aws_cloudwatch_event_rule" "valheim_startup_schedule" {
   name                = "valheim-startup-schedule"
-  schedule_expression = "rate(1 minutes)"
+  schedule_expression = "rate(1 minute)"
 }
 resource "aws_cloudwatch_event_target" "valheim_backup_target" {
   rule      = aws_cloudwatch_event_rule.valheim_backup_schedule.name
