@@ -76,7 +76,7 @@ resource "tls_private_key" "valheim" {
   rsa_bits  = 4096
 }
 
-resource "aws_key_pair" "valheim" {
+resource "aws_key_pair" "valheim_key" {
   key_name   = "valheim-key"
   public_key = tls_private_key.valheim.public_key_openssh
 }
