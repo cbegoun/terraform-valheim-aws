@@ -51,6 +51,26 @@ resource "aws_security_group" "valheim_sg" {
   }
 }
 
+resource "aws_security_group" "rdp" {
+  vpc_id      = aws_vpc.valheim.id
+  description = "Allow RDP inbound traffic"
+
+  ingress {
+    from_port   = 3389
+    to_port     = 3389
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+
+  }
+}
+
 resource "aws_key_pair" "valheim_key" {
   key_name   = "valheim-key"
   public_key = var.public_key
