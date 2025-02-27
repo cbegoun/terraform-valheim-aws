@@ -12,7 +12,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "valheim_backup" {
-  bucket = "valheim-backup-bucket"
+  bucket = "backup-valheim.${var.domain_name}"
 }
 
 resource "aws_s3_bucket_lifecycle_configuration" "valheim_backup_lifecycle" {
