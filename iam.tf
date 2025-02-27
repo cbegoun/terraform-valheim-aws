@@ -1,5 +1,5 @@
 resource "aws_iam_role" "lambda_role" {
-  name = "lambda_basic_execution"
+  name               = "lambda_basic_execution"
   assume_role_policy = <<EOF
   {
     "Version": "2012-10-17",
@@ -22,7 +22,7 @@ resource "aws_iam_role_policy_attachment" "lambda_basic_execution" {
 }
 
 resource "aws_iam_role" "backup_lambda_role" {
-  name = "backup_lambda_execution"
+  name               = "backup_lambda_execution"
   assume_role_policy = <<EOF
   {
     "Version": "2012-10-17",
