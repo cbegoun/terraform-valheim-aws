@@ -7,7 +7,7 @@ output "web_page_address" {
 }
 
 resource "local_file" "private_key" {
-  sensitive_content = tls_private_key.example.private_key_pem
+  sensitive_content = tls_private_key.valheim.private_key_pem
   filename          = "${path.module}/private_key.pem"
 }
 
