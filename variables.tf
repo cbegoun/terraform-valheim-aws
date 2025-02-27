@@ -35,3 +35,8 @@ variable "world_name" {
   type        = string
   description = "The Valheim world name"
 }
+
+variable "public_key" {
+  description = "SSH public key"
+  type        = string
+}

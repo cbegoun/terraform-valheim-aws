@@ -53,5 +53,5 @@ resource "aws_security_group" "valheim_sg" {
 
 resource "aws_key_pair" "valheim_key" {
   key_name   = "valheim-key"
-  public_key = file("~/.ssh/id_rsa.pub")
+  public_key = var.public_key
 }
