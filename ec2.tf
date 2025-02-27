@@ -8,7 +8,11 @@ resource "aws_instance" "valheim" {
 
   user_data = <<EOF
 <powershell>
-Invoke-WebRequest -Uri "https://example.com/setup_valheim_server.ps1" -OutFile "C:\setup_valheim_server.ps1"
+$serverName = "${var.server_name}"
+$worldName = "${var.world_name}"
+$serverPassword = "${var.server_password}"
+
+Invoke-WebRequest -Uri "https://github.com/cbegoun/terraform-valheim-aws/blob/main/powershell/setup_valheim_server.ps1" -OutFile "C:\setup_valheim_server.ps1"
 Start-Process -FilePath "powershell.exe" -ArgumentList "-ExecutionPolicy Bypass -File C:\setup_valheim_server.ps1" -Wait
 </powershell>
 EOF

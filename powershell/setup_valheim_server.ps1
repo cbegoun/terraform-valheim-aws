@@ -1,3 +1,9 @@
+param (
+    [string]$ServerName,
+    [string]$WorldName,
+    [string]$ServerPassword
+)
+
 # Define paths and parameters
 $valheimInstallPath = "C:\valheim"
 $serverExe = "$valheimInstallPath\valheim_server.exe"
