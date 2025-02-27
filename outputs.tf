@@ -6,10 +6,16 @@ output "web_page_address" {
   value = "http://valheim.raeon.tech/start"
 }
 
-output "private_key_pem" {
-  value     = tls_private_key.valheim.private_key_pem
+resource "local_file" "private_key" {
+  sensitive_content = tls_private_key.example.private_key_pem
+  filename          = "${path.module}/private_key.pem"
 }
 
 output "public_key_openssh" {
   value = tls_private_key.valheim.public_key_openssh
+}
+
+resource "local_file" "private_key" {
+  sensitive_content = tls_private_key.example.private_key_pem
+  filename          = "${path.module}/private_key.pem"
 }
