@@ -173,14 +173,24 @@ resource "aws_cloudwatch_event_rule" "valheim_shutdown_schedule" {
   schedule_expression = "rate(5 minutes)"
 }
 
+resource "aws_cloudwatch_event_rule" "valheim_startup_schedule" {
+  name                = "valheim-startup-schedule"
+  schedule_expression = "rate(30 seconds)"
+}
 resource "aws_cloudwatch_event_target" "valheim_backup_target" {
   rule      = aws_cloudwatch_event_rule.valheim_backup_schedule.name
-  target_id = "valheim-backup-lambda"
+  target_id = "valheim_backup"
   arn       = aws_lambda_function.valheim_backup.arn
 }
 
 resource "aws_cloudwatch_event_target" "valheim_shutdown_target" {
   rule      = aws_cloudwatch_event_rule.valheim_shutdown_schedule.name
-  target_id = "valheim-shutdown-lambda"
+  target_id = "valheim_auto_shutdown"
   arn       = aws_lambda_function.valheim_auto_shutdown.arn
+}
+
+resource "aws_cloudwatch_event_target" "valheim_startup_target" {
+  rule      = aws_cloudwatch_event_rule.valheim_startup_schedule.name
+  target_id = "valheim_auto_start"
+  arn       = aws_lambda_function.valheim_auto_start.arn
 }
