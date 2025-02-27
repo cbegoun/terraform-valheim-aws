@@ -108,8 +108,11 @@ resource "aws_ecs_service" "valheim_service" {
   }
 }
 
+resource "aws_route53_zone" "valheim_ondemand_route53_zone" {
+  name = "${var.project_name}.${var.domain_name}"
+}
 resource "aws_route53_record" "valheim_dns" {
-  zone_id = "YOUR_ROUTE53_ZONE_ID"
+  zone_id = aws_route53_zone.valheim_ondemand_route53_zone.id
   name    = "valheim.raeon.tech"
   type    = "A"
   ttl     = 300

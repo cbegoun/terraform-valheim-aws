@@ -135,23 +135,6 @@ resource "aws_iam_role_policy_attachment" "valheim_ondemand_ecs_exec_policy_atta
   policy_arn = aws_iam_policy.valheim_ondemand_ecs_exec_policy.arn
 }
 
-resource "aws_iam_policy" "valheim_ondemand_sns_publish_policy" {
-  name        = "valheim_ondemand_sns_publish_policy"
-  path        = "/"
-  description = "Allows the valheim server ECS task to send SNS notifications on a specific topic"
-  policy = jsonencode({
-    "Version" : "2012-10-17",
-    "Statement" : [
-      {
-        "Effect" : "Allow",
-        "Action" : "sns:Publish",
-        "Resource" : aws_sns_topic.valheim_ondemand_updates_topic.arn
-      }
-    ]
-  })
-
-}
-
 resource "aws_iam_role_policy_attachment" "valheim_ondemand_sns_publish_policy_attachment" {
   role       = aws_iam_role.valheim_ondemand_fargate_task_role.name
   policy_arn = aws_iam_policy.valheim_ondemand_sns_publish_policy.arn
