@@ -6,11 +6,12 @@ resource "aws_instance" "valheim" {
   subnet_id                   = aws_subnet.valheim.id
   associate_public_ip_address = true
 
-  user_data = templatefile("${path.module}/powershell/startup.ps1.tpl", {
-    server_name     = var.server_name
-    server_world    = var.world_name
-    server_password = var.server_password
-  })
+  user_data = <<EOF
+<powershell>
+Invoke-WebRequest -Uri "https://example.com/setup_valheim_server.ps1" -OutFile "C:\setup_valheim_server.ps1"
+Start-Process -FilePath "powershell.exe" -ArgumentList "-ExecutionPolicy Bypass -File C:\setup_valheim_server.ps1" -Wait
+</powershell>
+EOF
 
   tags = {
     Name = "ValheimServer"
