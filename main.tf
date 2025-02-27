@@ -115,8 +115,8 @@ resource "aws_route53_record" "valheim_dns" {
   zone_id = aws_route53_zone.valheim_ondemand_route53_zone.id
   name    = "valheim.raeon.tech"
   type    = "A"
-  ttl     = 300
-  records = ["YOUR_SERVER_IP"]
+  ttl     = 30
+  records = ["1.1.1.1"]
 }
 
 data "archive_file" "auto_start_lambda" {
