@@ -16,7 +16,6 @@ output "private_key_pem" {
   sensitive = true
 }
 
-output "private_key_file" {
-  value     = local_file.private_key.filename
-  sensitive = true
+output "private_key_path" {
+  value = local_file.private_key.filename
 }
