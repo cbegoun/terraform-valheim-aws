@@ -11,7 +11,7 @@ variable "aws_region" {
 
 variable "domain" {
   type        = string
-  default     = ""
+  default     = "raeon.tech"
   description = "Domain name used to create a static monitoring URL"
 }
 
