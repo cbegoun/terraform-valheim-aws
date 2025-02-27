@@ -5,16 +5,10 @@ terraform {
       version = "~> 5.0"
     }
   }
-  backend "s3" {
-    bucket         = "your-terraform-state-bucket"
-    key            = "valheim/terraform.tfstate"
-    region         = "us-west-2"
-    dynamodb_table = "your-terraform-lock-table"
-  }
 }
 
 provider "aws" {
-  region = "us-west-2"
+  region = var.aws_region
 }
 
 resource "aws_s3_bucket" "valheim_backup" {
