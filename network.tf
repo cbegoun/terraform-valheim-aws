@@ -9,7 +9,7 @@ resource "aws_internet_gateway" "valheim" {
 resource "aws_subnet" "valheim" {
   vpc_id            = aws_vpc.valheim.id
   cidr_block        = "10.0.1.0/24"
-  availability_zone = var.aws_region
+  availability_zone = "${var.aws_region}a"
 }
 
 resource "aws_route_table" "valheim" {
