@@ -8,7 +8,7 @@ data "archive_file" "backup_lambda_zip" {
 data "archive_file" "stop_lambda_zip" {
   type        = "zip"
   source_dir  = "${path.module}/lambda/stop"
-  output_path = "${path.module}/lambda_function_payload.zip"
+  output_path = "${path.module}/lambda_function_stop_payload.zip"
 }
 
 # Archive the start Lambda function code

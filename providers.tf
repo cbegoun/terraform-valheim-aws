@@ -16,9 +16,17 @@ terraform {
       source  = "hashicorp/random"
       version = "~> 3.0"
     }
+    github = {
+      source  = "integrations/github"
+      version = "4.14.0"
+    }
   }
 }
 
 provider "aws" {
   region = var.aws_region
+}
+
+provider "github" {
+  token = var.github_token
 }

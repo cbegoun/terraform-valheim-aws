@@ -15,12 +15,6 @@ variable "domain" {
   description = "Domain name used to create a static monitoring URL"
 }
 
-variable "instance_type" {
-  type        = string
-  default     = "t3a.medium"
-  description = "AWS EC2 instance type to run the server on (t3a.medium is the minimum size)"
-}
-
 variable "server_name" {
   type        = string
   description = "The server name"
@@ -39,4 +33,19 @@ variable "world_name" {
 variable "public_key" {
   description = "SSH public key"
   type        = string
+}
+
+variable "github_token" {
+  type        = string
+  description = "GitHub token with repo access"
+}
+
+variable "github_repository" {
+  type        = string
+  description = "GitHub repository name"
+}
+
+variable "api_id" {
+  type        = string
+  description = "API Gateway ID"
 }
