@@ -47,6 +47,5 @@ resource "aws_s3_bucket_object" "index" {
   bucket = aws_s3_bucket.web_app_bucket.bucket
   key    = "index.html"
   source = "index.html"
-  acl    = "public-read"
   content_type = "text/html"
 }
