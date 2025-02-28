@@ -1,9 +1,9 @@
 resource "aws_lambda_function" "start_valheim_server" {
-  filename         = "lambda_function_payload.zip"
+  filename         = data.archive_file.lambda_zip.output_path
   function_name    = "start_valheim_server"
   role             = aws_iam_role.lambda_exec_role.arn
   handler          = "start_valheim_server.lambda_handler"
-  source_code_hash = filebase64sha256("lambda_function_payload.zip")
+  source_code_hash = data.archive_file.lambda_zip.output_base64sha256
   runtime          = "python3.8"
 
   environment {
