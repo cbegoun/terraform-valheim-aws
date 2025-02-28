@@ -19,3 +19,11 @@ output "private_key_pem" {
 output "private_key_path" {
   value = local_file.private_key.filename
 }
+
+output "s3_bucket_url" {
+  value = aws_s3_bucket.web_app_bucket.website_endpoint
+}
+
+output "api_gateway_url" {
+  value = "${aws_api_gateway_deployment.api_deployment.invoke_url}/start-server"
+}

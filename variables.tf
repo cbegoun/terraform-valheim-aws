@@ -34,18 +34,3 @@ variable "public_key" {
   description = "SSH public key"
   type        = string
 }
-
-variable "github_token" {
-  type        = string
-  description = "GitHub token with repo access"
-}
-
-variable "github_repository" {
-  type        = string
-  description = "GitHub repository name"
-}
-
-variable "api_id" {
-  type        = string
-  description = "API Gateway ID"
-}
