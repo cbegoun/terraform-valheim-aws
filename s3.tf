@@ -15,10 +15,6 @@ resource "aws_s3_bucket" "web_app_bucket" {
   website {
     index_document = "index.html"
   }
-
-  object_ownership {
-    rule = "BucketOwnerEnforced"
-  }
 }
 
 resource "aws_s3_bucket_public_access_block" "public_access" {
