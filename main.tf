@@ -1,6 +1,6 @@
 module "main" {
   source  = "app.terraform.io/terraform_cbegoun/valheim-module/aws"
-  version = "1.0.0"
+  version = "1.2.0"
 
   admins                  = var.admins
   aws_region              = var.aws_region
