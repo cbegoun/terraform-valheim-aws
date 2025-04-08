@@ -9,15 +9,9 @@ resource "aws_route53_zone" "valheim_subdomain" {
 resource "aws_route53_record" "subdomain_delegation" {
   zone_id = aws_route53_zone.valheim_subdomain.zone_id  # This is the Hosted Zone ID for raeon.tech
   name    = "valheim.${var.domain}"
-  type    = "NS"
-  ttl     = 300
-  records = [
-    "ns-357.awsdns-44.com.",
-    "ns-733.awsdns-27.net.",
-    "ns-1970.awsdns-54.co.uk.",
-    "ns-1433.awsdns-51.org."
-  ]
-
+  type    = "A"
+  ttl     = "30"
+  records = ["1.1.1.1"]
     lifecycle {
     ignore_changes = [records]
   }
