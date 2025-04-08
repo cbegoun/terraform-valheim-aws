@@ -1,12 +1,6 @@
 terraform {
   required_version = "~> 1.0"
 
-  backend "s3" {
-    # bucket = "CHANGEME"
-    # key    = "valheim-server/prod/terraform.tfstate"
-    # region = "CHANGEME"
-  }
-
   required_providers {
     aws = {
       source  = "hashicorp/aws"
