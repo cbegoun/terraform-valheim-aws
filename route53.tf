@@ -11,7 +11,12 @@ resource "aws_route53_record" "subdomain_delegation" {
   name    = "valheim.${var.domain}"
   type    = "NS"
   ttl     = 300
-  records = aws_route53_zone.valheim_subdomain.name_servers
+  records = [
+    "ns-357.awsdns-44.com.",
+    "ns-733.awsdns-27.net.",
+    "ns-1970.awsdns-54.co.uk.",
+    "ns-1433.awsdns-51.org."
+  ]
 
     lifecycle {
     ignore_changes = [records]
