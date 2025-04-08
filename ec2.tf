@@ -43,13 +43,7 @@ resource "aws_instance" "valheim" {
     device_index         = 0
   }
 
-  user_data = base64encode(templatefile("${path.module}/scripts/userdata.ps1.tftpl", {
-    server_name         = var.valheim_server_name,
-    world_name          = var.valheim_world_name,
-    server_pass         = var.valheim_password,
-    install_valheim_ps1 = local.install_valheim_script,  # Pass the content of install_valheim.ps1
-    watchdog_ps1        = local.watchdog_script         # Pass the content of watchdog.ps1
-  }))
+  user_data = base64encode(file("${path.module}/scripts/userdata.ps1"))
 
   tags = {
     Name = "valheim-server"
