@@ -45,8 +45,3 @@ variable "your_ip_cidr" {
   type        = string
 }
 
-variable "hosted_zone_id" {
-  description = "Route53 Hosted Zone ID for raeon.tech"
-  type        = string
-}
-
