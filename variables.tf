@@ -21,10 +21,8 @@ variable "instance_type" {
   description = "AWS EC2 instance type to run the server on (t3a.medium is the minimum size)"
 }
 
-variable "pgp_key" {
+variable "ssh_key" {
   type        = string
-  default     = "keybase:marypoppins"
-  description = "The base64 encoded PGP public key to encrypt AWS user passwords with. Can use keybase syntax, e.g., 'keybase:username'."
 }
 
 variable "purpose" {

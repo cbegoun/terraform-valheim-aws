@@ -1,12 +1,12 @@
 module "main" {
   source  = "app.terraform.io/terraform_cbegoun/valheim-module/aws"
-  version = "1.2.0"
+  version = "1.3.0"
 
   admins                  = var.admins
   aws_region              = var.aws_region
   domain                  = var.domain
   instance_type           = var.instance_type
-  pgp_key                 = var.pgp_key
+  ssh_key                 = var.ssh_key
   purpose                 = var.purpose
   s3_lifecycle_expiration = var.s3_lifecycle_expiration
   server_name             = var.server_name
