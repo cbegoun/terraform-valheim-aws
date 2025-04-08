@@ -5,8 +5,9 @@ variable "admins" {
 }
 
 variable "aws_region" {
+  description = "AWS region to deploy resources in"
   type        = string
-  description = "The AWS region to create the Valheim server"
+  default     = "us-east-2"
 }
 
 variable "domain" {
@@ -17,44 +18,36 @@ variable "domain" {
 
 variable "instance_type" {
   type        = string
-  default     = "t3a.medium"
-  description = "AWS EC2 instance type to run the server on (t3a.medium is the minimum size)"
+  default     = "t3.medium"
+  descrip
+  tion = "AWS EC2 instance type to run the server on (t3a.medium is the minimum size)"
 }
 
-variable "purpose" {
+variable "valheim_server_name" {
+  description = "Name of the Valheim server"
   type        = string
-  default     = "prod"
-  description = "The purpose of the deployment"
+  default     = "Raeon's Valheim Server"
 }
 
-variable "s3_lifecycle_expiration" {
+variable "valheim_world_name" {
+  description = "Name of the Valheim world"
   type        = string
-  default     = "90"
-  description = "The number of days to keep files (backups) in the S3 bucket before deletion"
+  default     = "Midgard_0425"
 }
 
-variable "server_name" {
+variable "valheim_password" {
+  description = "Password for the Valheim server"
   type        = string
-  description = "The server name"
+  sensitive   = true
 }
 
-variable "server_password" {
+variable "your_ip_cidr" {
+  description = "Your IP address with /32 suffix for RDP"
   type        = string
-  description = "The server password"
 }
 
-variable "sns_email" {
+variable "hosted_zone_id" {
+  description = "Route53 Hosted Zone ID for raeon.tech"
   type        = string
-  description = "The email address to send alerts to"
 }
 
-variable "unique_id" {
-  type        = string
-  default     = ""
-  description = "The ID of the deployment (used for tests)"
-}
-
-variable "world_name" {
-  type        = string
-  description = "The Valheim world name"
-}

@@ -1,0 +1,22 @@
+# Create Valheim directory
+New-Item -Path "C:\valheim" -ItemType Directory -Force
+
+# --- Write install_valheim.ps1 with variable values ---
+@'
+${templatefile("${path.module}/scripts/install_valheim.ps1.tftpl", {
+  server_name = server_name,
+  world_name  = world_name,
+  server_pass = server_pass
+})}
+'@ | Out-File -FilePath "C:\valheim\install_valheim.ps1" -Encoding UTF8
+
+# --- Write watchdog.ps1 ---
+@'
+${file("${path.module}/scripts/watchdog.ps1")}
+'@ | Out-File -FilePath "C:\valheim\watchdog.ps1" -Encoding UTF8
+
+# --- Run Valheim install script now ---
+powershell.exe -ExecutionPolicy Bypass -File "C:\valheim\install_valheim.ps1"
+
+# --- Schedule watchdog on boot ---
+schtasks /Create /TN "ValheimWatchdog" /TR "powershell.exe -ExecutionPolicy Bypass -File `"`"C:\valheim\watchdog.ps1`"`"" /SC ONSTART /RL HIGHEST /F

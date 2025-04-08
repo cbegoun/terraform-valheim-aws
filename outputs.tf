@@ -1,25 +1,4 @@
-output "monitoring_url" {
-  value       = module.main.monitoring_url
-  description = "URL to monitor the Valheim Server"
-}
-
-output "bucket_id" {
-  value       = module.main.bucket_id
-  description = "The S3 bucket name"
-}
-
-output "instance_id" {
-  value       = module.main.instance_id
-  description = "The EC2 instance ID"
-}
-
-output "valheim_server_name" {
-  value       = var.server_name
-  description = "Name of the Valheim server"
-}
-
-# Output the private key for SSH access
-output "valheim_private_key" {
-  value     = module.main.valheim_private_key_pem
-  sensitive = true
+output "hosted_zone_nameservers" {
+  value       = aws_route53_zone.valheim_subdomain.name_servers
+  description = "The Hosted Zone's NS records. Use this to delegate the zone from your parent zone."
 }
