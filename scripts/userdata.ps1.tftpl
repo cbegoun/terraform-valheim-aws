@@ -3,16 +3,12 @@ New-Item -Path "C:\valheim" -ItemType Directory -Force
 
 # --- Write install_valheim.ps1 with variable values ---
 @'
-${templatefile("${path}/scripts/install_valheim.ps1.tftpl", {
-  server_name = server_name,
-  world_name  = world_name,
-  server_pass = server_pass
-})}
+${install_valheim_ps1}
 '@ | Out-File -FilePath "C:\valheim\install_valheim.ps1" -Encoding UTF8
 
 # --- Write watchdog.ps1 ---
 @'
-${file("${path}/scripts/watchdog.ps1")}
+${watchdog_ps1}
 '@ | Out-File -FilePath "C:\valheim\watchdog.ps1" -Encoding UTF8
 
 # --- Run Valheim install script now ---
