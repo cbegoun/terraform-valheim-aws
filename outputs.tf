@@ -23,8 +23,3 @@ output "valheim_private_key" {
   value     = module.main.valheim_private_key_pem
   sensitive = true
 }
-
-# Optional: public IP for convenience
-output "valheim_instance_ip" {
-  value = module.main.valheim_public_ip
-}
