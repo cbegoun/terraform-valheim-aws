@@ -28,12 +28,6 @@ resource "aws_key_pair" "valheim_keypair" {
   }
 }
 
-# Preload script contents into local variables
-locals {
-  install_valheim_script = file("${path.module}/scripts/install_valheim.ps1.tftpl")
-  watchdog_script        = file("${path.module}/scripts/watchdog.ps1")
-}
-
 resource "aws_instance" "valheim" {
   ami               = data.aws_ami.windows_2022.id
   instance_type     = "t3.medium"
