@@ -19,8 +19,7 @@ variable "domain" {
 variable "instance_type" {
   type        = string
   default     = "t3.medium"
-  descrip
-  tion = "AWS EC2 instance type to run the server on (t3a.medium is the minimum size)"
+  description = "AWS EC2 instance type to run the server on (t3a.medium is the minimum size)"
 }
 
 variable "valheim_server_name" {
