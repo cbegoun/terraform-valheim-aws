@@ -36,9 +36,6 @@ resource "aws_instance" "valheim" {
     network_interface_id = aws_network_interface.valheim_eni.id
     device_index         = 0
   }
-
-  user_data = base64encode(file("${path.module}/scripts/userdata.ps1"))
-
   tags = {
     Name = "valheim-server"
   }
