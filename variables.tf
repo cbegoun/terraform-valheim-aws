@@ -21,10 +21,6 @@ variable "instance_type" {
   description = "AWS EC2 instance type to run the server on (t3a.medium is the minimum size)"
 }
 
-variable "ssh_key" {
-  type        = string
-}
-
 variable "purpose" {
   type        = string
   default     = "prod"

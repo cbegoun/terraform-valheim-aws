@@ -22,3 +22,14 @@ output "valheim_server_name" {
   value       = var.server_name
   description = "Name of the Valheim server"
 }
+
+# Output the private key for SSH access
+output "valheim_private_key" {
+  value     = module.main.tls_private_key.valheim.private_key_pem
+  sensitive = true
+}
+
+# Optional: public IP for convenience
+output "valheim_instance_ip" {
+  value = module.main.aws_instance.valheim.public_ip
+}
