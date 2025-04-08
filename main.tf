@@ -1,4 +1,4 @@
-module "valheim-module" {
+module "main" {
   source  = "app.terraform.io/terraform_cbegoun/valheim-module/aws"
   version = "1.0.0"
 
