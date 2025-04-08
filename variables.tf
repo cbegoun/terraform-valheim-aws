@@ -45,3 +45,8 @@ variable "your_ip_cidr" {
   type        = string
 }
 
+variable "key_pair_name" {
+  description = "The name of the EC2 key pair"
+  type        = string
+  default     = "valheim-keypair"
+}

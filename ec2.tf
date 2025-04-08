@@ -14,10 +14,24 @@ data "aws_ami" "windows_2022" {
     provider = aws
 }
 
+resource "tls_private_key" "valheim_key" {
+  algorithm = "RSA"
+  rsa_bits  = 2048
+}
+
+resource "aws_key_pair" "valheim_keypair" {
+  key_name   = var.key_pair_name
+  public_key = tls_private_key.valheim_key.public_key_openssh
+
+  tags = {
+    Name = "valheim-keypair"
+  }
+}
+
 resource "aws_instance" "valheim" {
   ami               = data.aws_ami.windows_2022.id
   instance_type     = "t3.medium"
-  key_name          = var.key_pair_name
+  key_name          = aws_key_pair.valheim_keypair.key_name
   network_interface {
     network_interface_id = aws_network_interface.valheim_eni.id
     device_index         = 0
@@ -28,7 +42,7 @@ resource "aws_instance" "valheim" {
         world_name  = var.valheim_world_name,
         server_pass = var.valheim_password
         }))
-        
+
   tags = {
     Name = "valheim-server"
   }
