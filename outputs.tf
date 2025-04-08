@@ -13,11 +13,6 @@ output "instance_id" {
   description = "The EC2 instance ID"
 }
 
-output "valheim_user_passwords" {
-  value       = module.main.valheim_user_passwords
-  description = "List of AWS users and their encrypted passwords"
-}
-
 output "valheim_server_name" {
   value       = var.server_name
   description = "Name of the Valheim server"
@@ -25,11 +20,11 @@ output "valheim_server_name" {
 
 # Output the private key for SSH access
 output "valheim_private_key" {
-  value     = module.main.tls_private_key.valheim.private_key_pem
+  value     = module.main.valheim.private_key_pem
   sensitive = true
 }
 
 # Optional: public IP for convenience
 output "valheim_instance_ip" {
-  value = module.main.aws_instance.valheim.public_ip
+  value = module.main.valheim.public_ip
 }
